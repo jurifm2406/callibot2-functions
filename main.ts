@@ -27,3 +27,13 @@ function forward(zeit: number, tempo: number) {
         calliBot2.motorStop(C2Motor.beide, C2Stop.Bremsen)
     }
 }
+
+function getBumperInput() {
+    const bumper = {
+    left: calliBot2.readBumperSensor(C2Sensor.links, C2State.an),
+    right: calliBot2.readBumperSensor(C2Sensor.rechts, C2State.an),
+    both: calliBot2.readBumperSensor(C2Sensor.links, C2State.an) && calliBot2.readBumperSensor(C2Sensor.rechts, C2State.an),
+    neither: calliBot2.readBumperSensor(C2Sensor.links, C2State.aus) && calliBot2.readBumperSensor(C2Sensor.rechts, C2State.aus)
+    }
+    return bumper
+}
